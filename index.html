@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luis Hernández | Data Scientist Jr</title>
+<meta name="description" content="Portafolio de Luis Antonio Hernández Ruiz, Data Scientist Jr. Proyectos de machine learning en Python: predicción de churn, regresión industrial y análisis de riesgo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --text:#14171f; --muted:#5a6272; --line:#e3e6ec;
+  --accent:#1f5fbf; --accent-soft:#e8f0fc; --good:#1d7a4a; --good-soft:#e5f4ec; --bad:#b4372f; --bad-soft:#fbeae8;
+  --shadow:0 1px 2px rgba(20,23,31,.04),0 4px 16px rgba(20,23,31,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f1218; --surface:#171b23; --text:#e8ebf1; --muted:#9aa3b2; --line:#2a303b;
+    --accent:#6ea2f0; --accent-soft:#1c2a40; --good:#5cc08b; --good-soft:#16302a; --bad:#f08178; --bad-soft:#3a1f1f;
+    --shadow:none;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;font-size:16px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;gap:12px}
+nav .brand{font-weight:700;color:var(--text)}
+nav ul{list-style:none;display:flex;gap:20px;margin:0;padding:0;font-size:14px}
+nav ul a{color:var(--muted)}
+@media (max-width:600px){nav ul{gap:14px;font-size:13px} nav ul li.hide-sm{display:none}}
+
+header.hero{padding:72px 0 48px}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--accent);letter-spacing:.02em}
+h1{font-size:clamp(32px,6vw,48px);line-height:1.1;margin:10px 0 14px;letter-spacing:-.02em}
+.lead{font-size:clamp(17px,2.4vw,19px);color:var(--muted);max-width:680px;margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-weight:600;font-size:15px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
+.btn:hover{text-decoration:none;border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (prefers-color-scheme: dark){.btn.primary{color:#0f1218}}
+.btn svg{width:18px;height:18px}
+
+section{padding:48px 0;border-top:1px solid var(--line)}
+h2{font-size:26px;margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 28px}
+
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
+.about p{margin:0 0 14px}
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:var(--shadow);font-size:15px}
+.facts dt{color:var(--muted);font-size:13px}
+.facts dd{margin:0 0 12px;font-weight:500}
+.facts dd:last-child{margin-bottom:0}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+
+.project{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;margin-bottom:24px;box-shadow:var(--shadow)}
+.project-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+.project h3{font-size:21px;margin:0;line-height:1.3}
+.tag-feat{font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:99px;white-space:nowrap}
+.project .context{color:var(--muted);margin:6px 0 20px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:0 0 22px}
+.metric{border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.metric .v{font-size:24px;font-weight:700;letter-spacing:-.01em}
+.metric .l{font-size:13px;color:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media (max-width:760px){.cols{grid-template-columns:1fr}}
+.block h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
+.block p,.block ul{margin:0 0 16px;font-size:15px}
+.block ul{padding-left:18px}
+.block li{margin-bottom:6px}
+figure{margin:4px 0 20px}
+figure img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line);background:#fff}
+figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 18px}
+.tag{font-family:"JetBrains Mono",monospace;font-size:12px;padding:3px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.links .btn{font-size:14px;padding:8px 14px}
+
+table.regions{width:100%;border-collapse:collapse;font-size:14px;margin:0 0 20px}
+table.regions th,table.regions td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left}
+table.regions th{color:var(--muted);font-weight:500;font-size:13px}
+table.regions tr.win td{font-weight:600}
+.pill{font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px}
+.pill.ok{color:var(--good);background:var(--good-soft)}
+.pill.no{color:var(--bad);background:var(--bad-soft)}
+.tablewrap{overflow-x:auto}
+
+.exp{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px 28px;margin-bottom:16px;box-shadow:var(--shadow)}
+.exp .top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.exp h3{font-size:18px;margin:0}
+.exp .when{color:var(--muted);font-size:14px}
+.exp .org{color:var(--muted);margin:2px 0 12px;font-size:15px}
+.exp ul{margin:0;padding-left:18px;font-size:15px}
+.exp li{margin-bottom:6px}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+.skill h4{margin:0 0 10px;font-size:15px}
+.skill .tags{margin:0}
+
+.contact{text-align:center;padding:64px 0}
+.contact p{color:var(--muted);max-width:560px;margin:0 auto 24px}
+.contact .btns{justify-content:center}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">Luis Hernández</a>
+    <ul>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li class="hide-sm"><a href="#experiencia">Experiencia</a></li>
+      <li class="hide-sm"><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Data Scientist Jr · Python · SQL · Machine Learning</div>
+    <h1>Luis Antonio Hernández Ruiz</h1>
+    <p class="lead">Construyo modelos de machine learning que se pueden explicar y que responden a una pregunta de negocio. Busco la solución más simple que resuelva el problema y traduzco las métricas a decisiones.</p>
+    <div class="btns">
+      <a class="btn primary" href="#proyectos">Ver proyectos</a>
+      <a class="btn" href="https://github.com/LAHRZ23" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+        GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/luis-antonio-hern%C3%A1ndez-ruiz-1abb21185/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"/></svg>
+        LinkedIn</a>
+      <a class="btn" href="assets/CV_Luis_Antonio_Hernandez_Ruiz.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>
+        Descargar CV</a>
+    </div>
+  </div>
+</header>
+
+<section id="sobre-mi">
+  <div class="wrap about">
+    <div>
+      <h2>Sobre mí</h2>
+      <p>Soy egresado del bootcamp de Ciencia de Datos de <strong>TripleTen</strong> (2026). Antes de dedicarme a los datos trabajé 4 años en soporte técnico y desarrollo de sistemas en el sector público, donde aprendí a escuchar a los usuarios y a convertir procesos informales en procesos medibles.</p>
+      <p>En mis proyectos me importa tanto el modelo como la decisión que permite tomar. Cuando dos modelos rinden casi igual, elijo el que se puede explicar y mantener.</p>
+    </div>
+    <dl class="facts">
+      <dt>Rol que busco</dt><dd>Data Scientist / Data Analyst Jr</dd>
+      <dt>Ubicación</dt><dd>Naucalpan, Estado de México · híbrido</dd>
+      <dt>Formación</dt><dd>Data Science Bootcamp, TripleTen (2025–2026)</dd>
+      <dt>Idiomas</dt><dd>Español nativo · Inglés avanzado</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="proyectos">
+  <div class="wrap">
+    <h2>Proyectos</h2>
+    <p class="sub">Tres proyectos de machine learning con el código completo, los datos y la explicación de cada decisión en GitHub.</p>
+
+    <!-- Proyecto 1 -->
+    <article class="project">
+      <div class="project-head">
+        <h3>Predicción de cancelación de clientes (churn) para una empresa de telecomunicaciones</h3>
+        <span class="tag-feat">Proyecto final</span>
+      </div>
+      <p class="context">Interconnect quería saber qué clientes estaban por darse de baja para ofrecerles promociones de retención a tiempo.</p>
+      <div class="metrics">
+        <div class="metric"><div class="v">0.84</div><div class="l">AUC-ROC en prueba</div></div>
+        <div class="metric"><div class="v">0.80</div><div class="l">Recall: 8 de cada 10 bajas detectadas</div></div>
+        <div class="metric"><div class="v">~$27K</div><div class="l">USD/mes en ingresos que se podrían retener</div></div>
+      </div>
+      <div class="cols">
+        <div class="block">
+          <h4>Datos</h4>
+          <p>4 tablas (contratos, datos demográficos, internet y telefonía) de 7,043 clientes, unidas por <code>customerID</code>.</p>
+          <h4>Decisiones clave</h4>
+          <ul>
+            <li>Construí la variable objetivo a partir de la fecha de baja y la eliminé de las variables para evitar <strong>fuga de datos</strong>.</li>
+            <li>Rellené los servicios no contratados con <code>"No service"</code> en lugar de imputarlos, para no inventar información.</li>
+            <li>Como solo el 27% de los clientes se da de baja, apliqué <strong>balanceo de clases</strong>: el Recall subió de 0.56 a 0.80.</li>
+            <li>Elegí la <strong>Regresión Logística</strong> sobre un Random Forest optimizado (0.839 frente a 0.842 de AUC-ROC). Rinde casi igual, es más rápida de reentrenar y marketing puede entender sus coeficientes.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <figure>
+            <img src="assets/churn_model_comparison.png" alt="Gráfica de barras con el AUC-ROC y el Recall de los 5 modelos comparados" loading="lazy">
+            <figcaption>Comparación de los 5 modelos probados.</figcaption>
+          </figure>
+          <h4>Limitaciones y siguientes pasos</h4>
+          <ul>
+            <li>La precisión es de 0.50: hay 371 falsas alarmas. Son baratas (una promoción de más), pero ajustar el umbral de decisión según el costo de cada error mejoraría el balance.</li>
+            <li>Los datos son una sola fotografía (febrero de 2020) de una empresa ficticia.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">Regresión Logística</span><span class="tag">Random Forest</span><span class="tag">GridSearchCV</span></div>
+      <div class="links">
+        <a class="btn" href="https://github.com/LAHRZ23/churn-interconnect" target="_blank" rel="noopener">Repositorio</a>
+        <a class="btn" href="https://github.com/LAHRZ23/churn-interconnect/blob/main/notebooks/churn_interconnect.ipynb" target="_blank" rel="noopener">Ver notebook</a>
+      </div>
+    </article>
+
+    <!-- Proyecto 2 -->
+    <article class="project">
+      <div class="project-head">
+        <h3>Predicción de recuperación de oro en un proceso industrial</h3>
+      </div>
+      <p class="context">Predecir el porcentaje de oro recuperado en dos etapas de una planta de purificación, para optimizar la producción y detectar parámetros no rentables.</p>
+      <div class="metrics">
+        <div class="metric"><div class="v">7.44</div><div class="l">sMAPE combinado en prueba (menor es mejor)</div></div>
+        <div class="metric"><div class="v">8.82</div><div class="l">sMAPE en validación cruzada: sin sobreajuste</div></div>
+        <div class="metric"><div class="v">3,200+</div><div class="l">registros inválidos detectados y eliminados</div></div>
+      </div>
+      <div class="cols">
+        <div class="block">
+          <h4>Decisiones clave</h4>
+          <ul>
+            <li><strong>Validé el objetivo:</strong> recalculé la recuperación con la fórmula del proceso y obtuve un error prácticamente de 0, así que el dato es confiable.</li>
+            <li><strong>Evité la fuga de datos:</strong> excluí 34 variables que se miden después del proceso y no estarían disponibles al predecir.</li>
+            <li>Rellené los nulos con <code>ffill</code>/<code>bfill</code> porque los datos son una serie de tiempo.</li>
+            <li>Comparé Regresión Lineal, Árbol de Decisión y Random Forest con validación cruzada y una <strong>métrica sMAPE propia</strong> (25% etapa rougher + 75% etapa final). Los modelos de árboles ganaron, lo que indica relaciones no lineales.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <figure>
+            <img src="assets/gold_concentracion_metales.png" alt="Tres gráficas de línea con la concentración media de oro, plata y plomo en cada etapa del proceso" loading="lazy">
+            <figcaption>La concentración de oro aumenta en cada etapa (de ~8 a ~40).</figcaption>
+          </figure>
+          <h4>Limitaciones y siguientes pasos</h4>
+          <ul>
+            <li>Random Forest y el Árbol de Decisión quedaron casi empatados (8.82 frente a 8.84). El árbol también sería defendible por ser más simple.</li>
+            <li>Los datos vienen de una sola planta, así que habría que validar el modelo con datos más recientes.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">Random Forest</span><span class="tag">Validación cruzada</span><span class="tag">make_scorer</span></div>
+      <div class="links">
+        <a class="btn" href="https://github.com/LAHRZ23/gold-recovery-ml" target="_blank" rel="noopener">Repositorio</a>
+        <a class="btn" href="https://github.com/LAHRZ23/gold-recovery-ml/blob/main/notebooks/gold_recovery.ipynb" target="_blank" rel="noopener">Ver notebook</a>
+      </div>
+    </article>
+
+    <!-- Proyecto 3 -->
+    <article class="project">
+      <div class="project-head">
+        <h3>Selección de región para nuevos pozos petroleros con análisis de riesgo</h3>
+      </div>
+      <p class="context">OilyGiant necesitaba decidir en cuál de tres regiones abrir 200 pozos, con un presupuesto de $100 M USD y un riesgo de pérdida máximo del 2.5%.</p>
+      <div class="metrics">
+        <div class="metric"><div class="v">~$6.65 M</div><div class="l">USD de beneficio promedio en la región elegida</div></div>
+        <div class="metric"><div class="v">0.3%</div><div class="l">riesgo de pérdida (límite: 2.5%)</div></div>
+        <div class="metric"><div class="v">1,000</div><div class="l">muestras bootstrap por región</div></div>
+      </div>
+      <div class="cols">
+        <div class="block">
+          <h4>Decisiones clave</h4>
+          <ul>
+            <li>Entrené una <strong>Regresión Lineal</strong> por región para predecir el volumen de reservas de 100,000 pozos.</li>
+            <li>La función de ganancia elige los 200 pozos con mayor <em>predicción</em>, pero calcula el ingreso con sus reservas <em>reales</em>.</li>
+            <li>Con <strong>bootstrapping</strong> estimé el beneficio, el intervalo de confianza al 95% y el riesgo de pérdida de cada región.</li>
+            <li><strong>Cambié mi recomendación:</strong> el análisis inicial elegía la Región 0 por su ganancia, pero al medir el riesgo la Región 1 resultó mejor. Su modelo es mucho más preciso (RMSE 0.89 frente a ~38).</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4>Resultado del bootstrapping</h4>
+          <div class="tablewrap">
+          <table class="regions">
+            <thead><tr><th>Región</th><th>Beneficio promedio</th><th>Riesgo</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>$6.01 M</td><td>2.0%</td><td><span class="pill ok">Cumple</span></td></tr>
+              <tr class="win"><td>1 ✓</td><td>$6.65 M</td><td>0.3%</td><td><span class="pill ok">Elegida</span></td></tr>
+              <tr><td>2</td><td>$6.16 M</td><td>3.0%</td><td><span class="pill no">Descartada</span></td></tr>
+            </tbody>
+          </table>
+          </div>
+          <h4>Limitaciones y siguientes pasos</h4>
+          <ul>
+            <li>Los datos son sintéticos.</li>
+            <li>Me gustaría agregar un análisis de sensibilidad (otro número de pozos u otro umbral de riesgo) y revisar los residuales del modelo.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">Regresión Lineal</span><span class="tag">Bootstrapping</span><span class="tag">Análisis de riesgo</span></div>
+      <div class="links">
+        <a class="btn" href="https://github.com/LAHRZ23/oilygiant-region-selection" target="_blank" rel="noopener">Repositorio</a>
+        <a class="btn" href="https://github.com/LAHRZ23/oilygiant-region-selection/blob/main/notebooks/oilygiant_region_selection.ipynb" target="_blank" rel="noopener">Ver notebook</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="wrap">
+    <h2>Experiencia</h2>
+    <p class="sub">Experiencia profesional relacionada con datos, sistemas y usuarios.</p>
+    <div class="exp">
+      <div class="top"><h3>Unidad de Apoyo Técnico e Informática</h3><span class="when">ago. 2022 – actualidad</span></div>
+      <div class="org">SAASCAEM · Organismo público del Gobierno del Estado de México</div>
+      <ul>
+        <li>Desarrollé <strong>SAASCANET</strong>, la intranet institucional para ~110 usuarios (PHP, MySQL, JavaScript), que reemplazó las solicitudes de soporte informales por tickets con folio, responsable y tiempo de resolución.</li>
+        <li>Diseñé la base de datos y los reportes que miden qué áreas piden más soporte y en cuánto tiempo se resuelve, generando evidencia para auditorías y control interno.</li>
+        <li>Coordiné una fase beta con encuesta a usuarios para priorizar mejoras con base en su retroalimentación.</li>
+      </ul>
+    </div>
+    <div class="exp">
+      <div class="top"><h3>Supervisor de Turno</h3><span class="when">jun. 2019 – jun. 2022</span></div>
+      <div class="org">Starbucks Coffee México</div>
+      <ul>
+        <li>Coordiné operaciones, inventario y equipo de trabajo, y analicé indicadores operativos para apoyar decisiones.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class="wrap">
+    <h2>Habilidades</h2>
+    <p class="sub">Herramientas que he usado en proyectos completos.</p>
+    <div class="skills">
+      <div class="skill"><h4>Lenguajes y datos</h4><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">pandas</span><span class="tag">NumPy</span></div></div>
+      <div class="skill"><h4>Machine Learning</h4><div class="tags"><span class="tag">scikit-learn</span><span class="tag">LightGBM</span><span class="tag">Clasificación</span><span class="tag">Regresión</span><span class="tag">Validación cruzada</span><span class="tag">Balanceo de clases</span></div></div>
+      <div class="skill"><h4>Análisis y estadística</h4><div class="tags"><span class="tag">EDA</span><span class="tag">Pruebas de hipótesis</span><span class="tag">Bootstrapping</span><span class="tag">Matplotlib</span><span class="tag">SciPy</span></div></div>
+      <div class="skill"><h4>Herramientas</h4><div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Jupyter</span><span class="tag">QGIS</span><span class="tag">PHP</span><span class="tag">JavaScript</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact">
+  <div class="wrap">
+    <h2>Hablemos</h2>
+    <p>Busco mi primera oportunidad como Data Scientist o Data Analyst Jr. Si tienes una vacante o quieres platicar sobre algún proyecto, escríbeme.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:lahrz2343@gmail.com">lahrz2343@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/luis-antonio-hern%C3%A1ndez-ruiz-1abb21185/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/LAHRZ23" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Luis Antonio Hernández Ruiz</footer>
+
+</body>
+</html>
