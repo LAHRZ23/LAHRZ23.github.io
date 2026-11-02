@@ -67,6 +67,7 @@ h2{font-size:26px;margin:0 0 8px;letter-spacing:-.01em}
 .metric .v{font-size:24px;font-weight:700;letter-spacing:-.01em}
 .metric .l{font-size:13px;color:var(--muted)}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.cols>.block{min-width:0}
 @media (max-width:760px){.cols{grid-template-columns:1fr}}
 .block h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
 .block p,.block ul{margin:0 0 16px;font-size:15px}
@@ -81,13 +82,15 @@ figcaption{font-size:13px;color:var(--muted);margin-top:6px}
 .links .btn{font-size:14px;padding:8px 14px}
 
 table.regions{width:100%;border-collapse:collapse;font-size:14px;margin:0 0 20px}
-table.regions th,table.regions td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left}
+table.regions th,table.regions td{white-space:nowrap;padding:9px 10px;border-bottom:1px solid var(--line);text-align:left}
 table.regions th{color:var(--muted);font-weight:500;font-size:13px}
 table.regions tr.win td{font-weight:600}
 .pill{font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px}
 .pill.ok{color:var(--good);background:var(--good-soft)}
 .pill.no{color:var(--bad);background:var(--bad-soft)}
-.tablewrap{overflow-x:auto}
+.tablewrap{overflow-x:auto;margin-bottom:20px}
+.private-note{font-size:13px;color:var(--muted);margin:0}
+.context strong{color:var(--text)}
 
 .exp{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px 28px;margin-bottom:16px;box-shadow:var(--shadow)}
 .exp .top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
@@ -101,6 +104,8 @@ table.regions tr.win td{font-weight:600}
 .skill{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
 .skill h4{margin:0 0 10px;font-size:15px}
 .skill .tags{margin:0}
+.also{margin-top:20px}
+.also h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
 
 .contact{text-align:center;padding:64px 0}
 .contact p{color:var(--muted);max-width:560px;margin:0 auto 24px}
@@ -126,7 +131,7 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
   <div class="wrap">
     <div class="eyebrow">Data Scientist Jr · Python · SQL · Machine Learning</div>
     <h1>Luis Antonio Hernández Ruiz</h1>
-    <p class="lead">Construyo modelos de machine learning que se pueden explicar y que responden a una pregunta de negocio. Busco la solución más simple que resuelva el problema y traduzco las métricas a decisiones.</p>
+    <p class="lead">Construyo sistemas y modelos que convierten datos en decisiones. Desarrollé una intranet que hoy usan ~110 personas y creo modelos de machine learning que el negocio puede entender, eligiendo siempre la solución más simple que resuelva el problema.</p>
     <div class="btns">
       <a class="btn primary" href="#proyectos">Ver proyectos</a>
       <a class="btn" href="https://github.com/LAHRZ23" target="_blank" rel="noopener">
@@ -146,13 +151,13 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
   <div class="wrap about">
     <div>
       <h2>Sobre mí</h2>
-      <p>Soy egresado del bootcamp de Ciencia de Datos de <strong>TripleTen</strong> (2026). Antes de dedicarme a los datos trabajé 4 años en soporte técnico y desarrollo de sistemas en el sector público, donde aprendí a escuchar a los usuarios y a convertir procesos informales en procesos medibles.</p>
-      <p>En mis proyectos me importa tanto el modelo como la decisión que permite tomar. Cuando dos modelos rinden casi igual, elijo el que se puede explicar y mantener.</p>
+      <p>Llevo 4 años desarrollando sistemas para usuarios reales en el sector público. Construí <strong>SAASCANET</strong>, una intranet con base de datos que convirtió procesos informales, como pedir soporte o avisar algo urgente, en procesos registrados y medibles. Esa experiencia me enseñó a entender qué necesita la operación antes de escribir una línea de código.</p>
+      <p>Hoy aplico el mismo enfoque al análisis de datos y al machine learning: me importa tanto el modelo como la decisión que permite tomar. Cuando dos modelos rinden casi igual, elijo el que se puede explicar y mantener.</p>
     </div>
     <dl class="facts">
-      <dt>Rol que busco</dt><dd>Data Scientist / Data Analyst Jr</dd>
+      <dt>Rol que busco</dt><dd>Data Scientist Jr · análisis de datos</dd>
       <dt>Ubicación</dt><dd>Naucalpan, Estado de México · híbrido</dd>
-      <dt>Formación</dt><dd>Data Science Bootcamp, TripleTen (2025–2026)</dd>
+      <dt>Experiencia</dt><dd>4 años desarrollando sistemas y bases de datos para ~110 usuarios</dd>
       <dt>Idiomas</dt><dd>Español nativo · Inglés avanzado</dd>
     </dl>
   </div>
@@ -161,19 +166,72 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
 <section id="proyectos">
   <div class="wrap">
     <h2>Proyectos</h2>
-    <p class="sub">Tres proyectos de machine learning con el código completo, los datos y la explicación de cada decisión en GitHub.</p>
+    <p class="sub">Un sistema real con análisis de sus datos y tres proyectos de machine learning. Cada uno sigue la misma estructura: problema, datos, decisiones, resultados y limitaciones.</p>
 
-    <!-- Proyecto 1 -->
+    <!-- Caso de estudio: SAASCANET -->
+    <article class="project">
+      <div class="project-head">
+        <h3>SAASCANET: sistema de soporte y análisis de su primer mes de operación</h3>
+        <span class="tag-feat">Datos reales · SQL + dashboard</span>
+      </div>
+      <p class="context"><strong>Problema:</strong> en el SAASCAEM, un organismo público del Estado de México, pedir soporte técnico era informal (llamadas, pasillo, WhatsApp). No quedaba registro de quién atendía, cuánto tardaba ni qué áreas necesitaban más apoyo. Construí SAASCANET para registrarlo y después analicé con SQL los tickets de su primer mes.</p>
+      <div class="metrics">
+        <div class="metric"><div class="v">74</div><div class="l">tickets reales analizados (29 sep – 29 oct 2026)</div></div>
+        <div class="metric"><div class="v">26 min</div><div class="l">tiempo mediano de resolución; 64% en menos de 1 hora</div></div>
+        <div class="metric"><div class="v">45%</div><div class="l">registrados como “Otro”: el formulario no describe los problemas reales</div></div>
+      </div>
+      <figure>
+        <img src="assets/saascanet_categorias_formulario.png" alt="Gráfica de barras: 44.6% de los tickets se registró en la categoría Otro del formulario, seguido de Falla técnica con 21.6%." loading="lazy">
+        <figcaption>Categoría que eligen los usuarios al levantar un ticket. Casi la mitad no encaja en ninguna opción.</figcaption>
+      </figure>
+      <div class="cols">
+        <div class="block">
+          <h4>Datos</h4>
+          <p>74 tickets exportados de la base MySQL del sistema: área, tipo de equipo, categoría, estatus, fechas de registro y resolución, y técnico. Eliminé nombres y texto libre, y reemplacé a usuarios y técnicos por seudónimos.</p>
+          <h4>Decisiones clave</h4>
+          <ul>
+            <li>Diseñé la <strong>base de datos pensando en medir</strong>: cada ticket tiene folio, responsable y tiempos.</li>
+            <li>Clasifiqué cada ticket en un <strong>tema real</strong> a partir de su texto, antes de anonimizarlo, porque la categoría del formulario no servía para analizar.</li>
+            <li>Respondí las preguntas con <strong>SQL</strong>: agregaciones, una función de ventana para el tema principal por área y una CTE recursiva para encontrar folios faltantes.</li>
+            <li>Usé la <strong>mediana</strong> y no el promedio: unos pocos tickets tardan días y llevan el promedio a ~5 horas.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4>Resultados</h4>
+          <ul>
+            <li>Un mismo usuario reportó <strong>5 fallas de USB en 3 semanas</strong>: es una falla de fondo del equipo, no de configuración. Recomendé escalar a reemplazo cuando un problema se repite 3 veces.</li>
+            <li>El <strong>11%</strong> de los tickets fue para copiar información entre CD y USB: una tarea que una guía de autoservicio puede resolver.</li>
+            <li>El <strong>38%</strong> de las solicitudes llega entre las 10:00 y las 12:00.</li>
+            <li>Propuse rediseñar las categorías del formulario con los temas reales.</li>
+          </ul>
+          <h4>Limitaciones y siguientes pasos</h4>
+          <ul>
+            <li>Es un solo mes de datos: los patrones son iniciales y hay que confirmarlos con más meses.</li>
+            <li>El tema se clasificó con reglas de palabras clave, así que puede haber errores.</li>
+            <li>El código del sistema es público en una versión sin datos reales, credenciales ni archivos de usuarios.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tags"><span class="tag">SQL</span><span class="tag">MySQL</span><span class="tag">SQLite</span><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Plotly</span><span class="tag">PHP</span><span class="tag">JavaScript</span></div>
+      <div class="links">
+        <a class="btn" href="saascanet/dashboard.html" target="_blank" rel="noopener">Ver dashboard</a>
+        <a class="btn" href="https://github.com/LAHRZ23/saascanet-analisis-soporte" target="_blank" rel="noopener">Repositorio del análisis</a>
+        <a class="btn" href="https://github.com/LAHRZ23/saascanet-analisis-soporte/blob/main/sql/consultas.sql" target="_blank" rel="noopener">Ver consultas SQL</a>
+        <a class="btn" href="https://github.com/LAHRZ23/saascanet" target="_blank" rel="noopener">Código del sistema</a>
+      </div>
+    </article>
+
+    <!-- Proyecto: churn -->
     <article class="project">
       <div class="project-head">
         <h3>Predicción de cancelación de clientes (churn) para una empresa de telecomunicaciones</h3>
-        <span class="tag-feat">Proyecto final</span>
+        <span class="tag-feat">Clasificación</span>
       </div>
-      <p class="context">Interconnect quería saber qué clientes estaban por darse de baja para ofrecerles promociones de retención a tiempo.</p>
+      <p class="context"><strong>Problema:</strong> Interconnect quería saber qué clientes estaban por darse de baja para ofrecerles promociones de retención a tiempo.</p>
       <div class="metrics">
         <div class="metric"><div class="v">0.84</div><div class="l">AUC-ROC en prueba</div></div>
         <div class="metric"><div class="v">0.80</div><div class="l">Recall: 8 de cada 10 bajas detectadas</div></div>
-        <div class="metric"><div class="v">~$27K</div><div class="l">USD/mes en ingresos que se podrían retener</div></div>
+        <div class="metric"><div class="v">~$27K</div><div class="l">USD/mes en ingresos en riesgo que se podrían intentar retener (estimado)</div></div>
       </div>
       <div class="cols">
         <div class="block">
@@ -194,7 +252,8 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
           </figure>
           <h4>Limitaciones y siguientes pasos</h4>
           <ul>
-            <li>La precisión es de 0.50: hay 371 falsas alarmas. Son baratas (una promoción de más), pero ajustar el umbral de decisión según el costo de cada error mejoraría el balance.</li>
+            <li>El impacto de ~$27K es una estimación: multiplica los 372 clientes detectados por su cargo mensual promedio ($73.53) y supone que todos se pudieran retener.</li>
+            <li>La precisión es de 0.50: hay 371 falsas alarmas. Ajustar el umbral de decisión según el costo de cada error mejoraría el balance.</li>
             <li>Los datos son una sola fotografía (febrero de 2020) de una empresa ficticia.</li>
           </ul>
         </div>
@@ -206,12 +265,13 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
       </div>
     </article>
 
-    <!-- Proyecto 2 -->
+    <!-- Proyecto: oro -->
     <article class="project">
       <div class="project-head">
         <h3>Predicción de recuperación de oro en un proceso industrial</h3>
+        <span class="tag-feat">Regresión</span>
       </div>
-      <p class="context">Predecir el porcentaje de oro recuperado en dos etapas de una planta de purificación, para optimizar la producción y detectar parámetros no rentables.</p>
+      <p class="context"><strong>Problema:</strong> predecir el porcentaje de oro recuperado en dos etapas de una planta de purificación, para optimizar la producción y detectar parámetros no rentables.</p>
       <div class="metrics">
         <div class="metric"><div class="v">7.44</div><div class="l">sMAPE combinado en prueba (menor es mejor)</div></div>
         <div class="metric"><div class="v">8.82</div><div class="l">sMAPE en validación cruzada: sin sobreajuste</div></div>
@@ -219,6 +279,8 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
       </div>
       <div class="cols">
         <div class="block">
+          <h4>Datos</h4>
+          <p>Mediciones de una planta de purificación en el tiempo: tres conjuntos (entrenamiento, prueba y completo) con más de 80 variables del proceso por registro.</p>
           <h4>Decisiones clave</h4>
           <ul>
             <li><strong>Validé el objetivo:</strong> recalculé la recuperación con la fórmula del proceso y obtuve un error prácticamente de 0, así que el dato es confiable.</li>
@@ -246,39 +308,47 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
       </div>
     </article>
 
-    <!-- Proyecto 3 -->
+    <!-- Proyecto: OilyGiant -->
     <article class="project">
       <div class="project-head">
         <h3>Selección de región para nuevos pozos petroleros con análisis de riesgo</h3>
+        <span class="tag-feat">Regresión + bootstrapping</span>
       </div>
-      <p class="context">OilyGiant necesitaba decidir en cuál de tres regiones abrir 200 pozos, con un presupuesto de $100 M USD y un riesgo de pérdida máximo del 2.5%.</p>
+      <p class="context"><strong>Problema:</strong> OilyGiant necesitaba decidir en cuál de tres regiones abrir 200 pozos, con un presupuesto de $100 M USD y un riesgo de pérdida máximo del 2.5%. En cada región solo se pueden explorar 500 pozos antes de elegir los 200 mejores.</p>
       <div class="metrics">
         <div class="metric"><div class="v">~$6.65 M</div><div class="l">USD de beneficio promedio en la región elegida</div></div>
         <div class="metric"><div class="v">0.3%</div><div class="l">riesgo de pérdida (límite: 2.5%)</div></div>
         <div class="metric"><div class="v">1,000</div><div class="l">muestras bootstrap por región</div></div>
       </div>
+      <figure>
+        <img src="assets/oil_bootstrap_ganancias.png" width="1170" height="936" alt="Tres histogramas, uno por región, con la ganancia de 1,000 muestras bootstrap. La Región 1 casi no tiene muestras con pérdida; la Región 2 tiene 3% de muestras con pérdida.">
+        <figcaption>Distribución de la ganancia en las 1,000 simulaciones de cada región. Las barras rojas son escenarios con pérdida.</figcaption>
+      </figure>
+          <div class="tablewrap">
+      <table class="regions">
+        <thead><tr><th>Región</th><th>Beneficio promedio</th><th>IC 95%</th><th>Riesgo</th><th>Decisión</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>$6.01 M</td><td>$0.13 M a $12.31 M</td><td>2.0%</td><td><span class="pill ok">Cumple</span></td></tr>
+          <tr class="win"><td>1</td><td>$6.65 M</td><td>$1.58 M a $11.98 M</td><td>0.3%</td><td><span class="pill ok">Elegida</span></td></tr>
+          <tr><td>2</td><td>$6.16 M</td><td>−$0.12 M a $12.31 M</td><td>3.0%</td><td><span class="pill no">Descartada</span></td></tr>
+        </tbody>
+      </table>
+      </div>
       <div class="cols">
         <div class="block">
+          <h4>Datos</h4>
+          <p>Tres conjuntos sintéticos, uno por región, de 100,000 pozos cada uno: tres características geológicas y el volumen de reservas (miles de barriles).</p>
           <h4>Decisiones clave</h4>
           <ul>
-            <li>Entrené una <strong>Regresión Lineal</strong> por región para predecir el volumen de reservas de 100,000 pozos.</li>
+            <li>Entrené una <strong>Regresión Lineal</strong> por región para predecir el volumen de reservas.</li>
             <li>La función de ganancia elige los 200 pozos con mayor <em>predicción</em>, pero calcula el ingreso con sus reservas <em>reales</em>.</li>
-            <li>Con <strong>bootstrapping</strong> estimé el beneficio, el intervalo de confianza al 95% y el riesgo de pérdida de cada región.</li>
-            <li><strong>Cambié mi recomendación:</strong> el análisis inicial elegía la Región 0 por su ganancia, pero al medir el riesgo la Región 1 resultó mejor. Su modelo es mucho más preciso (RMSE 0.89 frente a ~38).</li>
+            <li>Con <strong>bootstrapping</strong> simulé 1,000 veces la exploración de 500 pozos y la selección de los 200 mejores, para estimar el beneficio, su intervalo de confianza al 95% y el riesgo de pérdida.</li>
           </ul>
         </div>
         <div class="block">
-          <h4>Resultado del bootstrapping</h4>
-          <div class="tablewrap">
-          <table class="regions">
-            <thead><tr><th>Región</th><th>Beneficio promedio</th><th>Riesgo</th><th></th></tr></thead>
-            <tbody>
-              <tr><td>0</td><td>$6.01 M</td><td>2.0%</td><td><span class="pill ok">Cumple</span></td></tr>
-              <tr class="win"><td>1 ✓</td><td>$6.65 M</td><td>0.3%</td><td><span class="pill ok">Elegida</span></td></tr>
-              <tr><td>2</td><td>$6.16 M</td><td>3.0%</td><td><span class="pill no">Descartada</span></td></tr>
-            </tbody>
-          </table>
-          </div>
+          <h4>Por qué cambié mi recomendación</h4>
+          <p>El análisis preliminar elegía los 200 mejores pozos entre los 25,000 del conjunto de validación, y ahí ganaba la <strong>Región 0</strong> ($33.2 M) porque tiene los pozos más grandes. Pero en la realidad solo se exploran 500 pozos, y con tan pocos la <strong>precisión del modelo</strong> pesa más que el tamaño de los pozos.</p>
+          <p>En la <strong>Región 1</strong> el modelo casi no se equivoca (RMSE 0.89 frente a ~38 y ~40 en las otras), así que los pozos que elige son realmente los mejores. Por eso, al simular el escenario real, tuvo el mayor beneficio promedio y el menor riesgo. La Región 2 quedó descartada por superar el límite de riesgo (3.0%).</p>
           <h4>Limitaciones y siguientes pasos</h4>
           <ul>
             <li>Los datos son sintéticos.</li>
@@ -321,12 +391,16 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
 <section id="habilidades">
   <div class="wrap">
     <h2>Habilidades</h2>
-    <p class="sub">Herramientas que he usado en proyectos completos.</p>
+    <p class="sub">Herramientas que uso en los proyectos de este portafolio.</p>
     <div class="skills">
-      <div class="skill"><h4>Lenguajes y datos</h4><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">pandas</span><span class="tag">NumPy</span></div></div>
-      <div class="skill"><h4>Machine Learning</h4><div class="tags"><span class="tag">scikit-learn</span><span class="tag">LightGBM</span><span class="tag">Clasificación</span><span class="tag">Regresión</span><span class="tag">Validación cruzada</span><span class="tag">Balanceo de clases</span></div></div>
-      <div class="skill"><h4>Análisis y estadística</h4><div class="tags"><span class="tag">EDA</span><span class="tag">Pruebas de hipótesis</span><span class="tag">Bootstrapping</span><span class="tag">Matplotlib</span><span class="tag">SciPy</span></div></div>
-      <div class="skill"><h4>Herramientas</h4><div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Jupyter</span><span class="tag">QGIS</span><span class="tag">PHP</span><span class="tag">JavaScript</span></div></div>
+      <div class="skill"><h4>Datos</h4><div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">NumPy</span><span class="tag">SQL</span><span class="tag">MySQL</span></div></div>
+      <div class="skill"><h4>Machine Learning</h4><div class="tags"><span class="tag">scikit-learn</span><span class="tag">Clasificación</span><span class="tag">Regresión</span><span class="tag">Validación cruzada</span><span class="tag">Balanceo de clases</span><span class="tag">GridSearchCV</span></div></div>
+      <div class="skill"><h4>Análisis</h4><div class="tags"><span class="tag">SQL</span><span class="tag">Plotly</span><span class="tag">EDA</span><span class="tag">Bootstrapping</span><span class="tag">Matplotlib</span><span class="tag">Métricas de negocio</span></div></div>
+      <div class="skill"><h4>Desarrollo</h4><div class="tags"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Jupyter</span></div></div>
+    </div>
+    <div class="also">
+      <h4>También he trabajado con</h4>
+      <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">SciPy</span><span class="tag">Pruebas de hipótesis</span><span class="tag">LightGBM</span><span class="tag">QGIS</span></div>
     </div>
   </div>
 </section>
@@ -334,7 +408,7 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
 <section id="contacto" class="contact">
   <div class="wrap">
     <h2>Hablemos</h2>
-    <p>Busco mi primera oportunidad como Data Scientist o Data Analyst Jr. Si tienes una vacante o quieres platicar sobre algún proyecto, escríbeme.</p>
+    <p>Busco oportunidades como Data Scientist Jr o en roles de análisis de datos. Si tienes una vacante o quieres platicar sobre algún proyecto, escríbeme.</p>
     <div class="btns">
       <a class="btn primary" href="mailto:lahrz2343@gmail.com">lahrz2343@gmail.com</a>
       <a class="btn" href="https://www.linkedin.com/in/luis-antonio-hern%C3%A1ndez-ruiz-1abb21185/" target="_blank" rel="noopener">LinkedIn</a>
